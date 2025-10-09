@@ -22,13 +22,13 @@ ui <- dashboardPage(
     ),
     
     #Le bouton pour charger un fichier
-    fileInput("file_upload", "Charger un fichier",
+    fileInput("file_upload", "Load a .csv file :",
       accept = c(".csv")
       ),
     
     #Le menu déroulant
-    selectInput("fonction_select", "Sélectionner une fonction",
-      choices = c("Fonction 1", "Fonction 2", "Fonction 3")
+    selectInput("fonction_select", "Select an organism name :",
+      choices = c("Homo sapiens", "Canis lupus", "Mus musculus")
       ),
     
     
@@ -43,17 +43,70 @@ ui <- dashboardPage(
   ),
   
   dashboardBody(
+    #Gère le css de la partie SideBar qui ne peut pas être géré sur l'élément lui même mais que à travers le body
+    tags$head(
+      tags$style(HTML("
+      /*  Change le titre en haut à gauche */
+      .brand-link {
+      font-size : 24px !important; font-weight : bold !important; background-color : #009688 !important; width : 100% !important; text-align : center !important;
+      }
+      /* Changer la largeur de la sidebar */
+      .main-sidebar {
+        width: 300px !important;  /* Largeur par défaut : 230px */
+      }
+      /* Ajuster le contenu principal pour compenser */
+      .content-wrapper,
+      .main-header .navbar {
+        margin-left: 300px !important;  /* Doit être = largeur sidebar */
+      }
+      /* Quand la sidebar est réduite (collapsed) */
+      .sidebar-collapse .main-sidebar {
+        width: 10px !important;
+      }
+      .sidebar-collapse .content-wrapper,
+      .sidebar-collapse .main-header .navbar {
+        margin-left: 50px !important;
+      }
+      
+      /* Change la couleur de la navbar */
+      .nav {
+      background-color : #009688 !important; padding:10px !important; border-radius:10px !important;
+      }
+      
+      /* Style quand un menuItem est ACTIF/SÉLECTIONNÉ */
+      .sidebar-menu > li.active > a {
+        background-color: #5C6BC0 !important;  /* Ta couleur */
+        color: white !important;
+        border-left: 4px solid #3F51B5 !important;
+        font-weight: 600 !important;
+      }
+      
+      /* Style au survol */
+      .sidebar-menu > li > a:hover {
+        background-color: #4A5568 !important;
+        color: white !important;
+      }
+    ")
+  ),
+    ),
+    
+    
     #Titre centré
     div(
       style = "width: 100%; display: flex; justify-content: center; align-items: center; padding: 10px 10px 20px 10px;",
-      h1("Welcome to my Shiny Application", style = "font-weight: bold; font-size: 32px; font-family: Arial, sans-serif; padding : 0, margin : 10px",)
+      h1("Welcome on Enrichment Analeasy", style = "font-weight: bold; font-size: 32px; font-family: Arial, sans-serif; padding : 0, margin : 10px",)
     ),
-    
     tabItems(
-      
       # Page Home - VIDE
       tabItem(tabName = "home",
-              h2("Page d'accueil")
+              h2("Welcome on Enrichment Analeasy, an application that will help you to do your functional enrichment analysis !",
+                 style= "padding:30px"),
+              box(style = "background-color : #009688",
+                  title = "Instruction :",
+                  p("1 - Load your data table", style = "font-weight: bold; font-size : 22px" ),
+                  p("2 - Choose the log2FC with the slider", style = "font-weight: bold;font-size : 22px"),
+                  p("3 - Download your plot !", style = "font-weight: bold; font-size : 22px")
+              )
       ),
       #Deux bloc l'un a coté de l'autre avec une parti bleu en haut du bloc
       tabItem(tabName = "item1",
@@ -63,12 +116,12 @@ ui <- dashboardPage(
                     title = "",
                     height = "175px",
                     width = 6,
-                    status = "primary",      # Couleur : primary, success, warning, danger, info
+                    status = "info",      # Couleur : primary, success, warning, danger, info
                     solidHeader = TRUE,      # Active la coloration du header
                     plotOutput("", height = "150px")
                   ),
                   box(
-                    status = "primary",
+                    status = "info",
                     solidHeader = TRUE,
                     title = "",
                     height = "175px",
@@ -105,7 +158,7 @@ ui <- dashboardPage(
         #un bloc servant a recevoir un tableau de donnée 
         fluidRow(
           box(
-            status = "primary",
+            status = "info",
             solidHeader = TRUE,
             title = "",
             width = 12,
