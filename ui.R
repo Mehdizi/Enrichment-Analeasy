@@ -38,9 +38,9 @@ ui <- dashboardPage(
     # Navigation bar
     sidebarMenu(
       id = "menu_navigation",
-      menuItem("Whole Data Expectation", tabName = "dataExpectation", icon = icon("th")),
-      menuItem("GO Term Enrichment", tabName = "goEnrichment", icon = icon("th")),
-      menuItem("Pathway Enrichment", tabName = "pathwayEnrichment", icon = icon("th")),
+      menuItem("Whole Data Expectation", tabName = "dataExpectation", icon = icon("chart-simple")),
+      menuItem("GO Term Enrichment", tabName = "goEnrichment", icon = icon("magnifying-glass-chart")),
+      menuItem("Pathway Enrichment", tabName = "pathwayEnrichment", icon = icon("database")),
       menuItem("About", tabName = "about", icon = icon("th"))
     )
   ),
