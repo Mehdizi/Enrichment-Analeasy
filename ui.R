@@ -73,17 +73,30 @@ ui <- dashboardPage(
       background-color : #009688 !important; padding:10px !important; border-radius:10px !important;
       }
       
-      /* Style quand un menuItem est ACTIF/SÉLECTIONNÉ */
-      .sidebar-menu > li.active > a {
-        background-color: #5C6BC0 !important;  /* Ta couleur */
-        color: white !important;
-        border-left: 4px solid #3F51B5 !important;
-        font-weight: 600 !important;
-      }
+        /* Items non sélectionnés */
+  .sidebar-menu > li > a {
+    color: #E2E8F0 !important;
+    padding: 14px 20px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Au survol */
+  .sidebar-menu > li > a:hover {
+    background-color: #2D3748 !important;
+    color: white !important;
+    transform: translateX(5px);
+  }
       
+       /* Style pour bs4Dash - Item actif */
+  .nav-sidebar .nav-item > .nav-link.active,
+  .nav-sidebar .nav-item.menu-open > .nav-link {
+    background-color: #4BA0B5 !important;
+    color: white !important;
+    font-weight: 600 !important;
+  }
       /* Style au survol */
       .sidebar-menu > li > a:hover {
-        background-color: #4A5568 !important;
+        background-color: #4BA0B5 !important;
         color: white !important;
       }
     ")
@@ -102,7 +115,9 @@ ui <- dashboardPage(
               h2("Welcome on Enrichment Analeasy, an application that will help you to achieve your functional enrichment analysis !",
                  style= "padding:30px"),
               box(style = "background-color : #009688",
-                  title = "Instruction :",
+                  status = "info",
+                  solidHeader = TRUE,
+                  title = "Instructions :",
                   p("1 - Load your data table", style = "font-weight: bold; font-size : 22px" ),
                   p("2 - Choose the log2FC with the slider", style = "font-weight: bold;font-size : 22px"),
                   p("3 - Download your plot !", style = "font-weight: bold; font-size : 22px")
