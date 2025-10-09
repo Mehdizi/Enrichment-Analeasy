@@ -35,10 +35,10 @@ ui <- dashboardPage(
     #La liste des 4 items
     sidebarMenu(
       id = "menu_navigation",
-      menuItem("item1", tabName = "item1", icon = icon("th")),
-      menuItem("item2", tabName = "item2", icon = icon("th")),
-      menuItem("item3", tabName = "item3", icon = icon("th")),
-      menuItem("item4", tabName = "item4", icon = icon("th"))
+      menuItem("Whole Data Expectation", tabName = "dataExpectation", icon = icon("th")),
+      menuItem("GO Term Enrichment", tabName = "goEnrichment", icon = icon("th")),
+      menuItem("Pathway Enrichment", tabName = "pathwayEnrichment", icon = icon("th")),
+      menuItem("about", tabName = "About", icon = icon("th"))
     )
   ),
   
@@ -124,7 +124,7 @@ ui <- dashboardPage(
               )
       ),
       #Deux bloc l'un a coté de l'autre avec une parti bleu en haut du bloc
-      tabItem(tabName = "item1",
+      tabItem(tabName = "dataExpectation",
               div (
                 fluidRow(
                   box(
@@ -182,17 +182,17 @@ ui <- dashboardPage(
           ),
         )
       ),
-      tabItem(tabName = "item2",
+      tabItem(tabName = "goEnrichment",
               h2("Item 2")
       ),
       
       # Page Item 3 - VIDE
-      tabItem(tabName = "item3",
+      tabItem(tabName = "pathwayEnrichment",
               h2("Item 3")
       ),
       
       # Page Item 4 - VIDE
-      tabItem(tabName = "item4",
+      tabItem(tabName = "about",
               h2("Item 4")
       )
     )
