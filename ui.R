@@ -99,7 +99,7 @@ ui <- dashboardPage(
     tabItems(
       # Page Home - VIDE
       tabItem(tabName = "home",
-              h2("Welcome on Enrichment Analeasy, an application that will help you to do your functional enrichment analysis !",
+              h2("Welcome on Enrichment Analeasy, an application that will help you to achieve your functional enrichment analysis !",
                  style= "padding:30px"),
               box(style = "background-color : #009688",
                   title = "Instruction :",
