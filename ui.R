@@ -4,7 +4,7 @@
 # email  mehdi.tachekort@univ-rouen.com
 # Affiliation : Université de Rouen Normandie
 # Date : 08/10/2025
-# Description : Application of functional enrichment analysis
+# Description : Application to perform functional enrichment analysis
 # .........................................
 
 library(styler)
