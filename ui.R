@@ -38,7 +38,7 @@ ui <- dashboardPage(
       menuItem("Whole Data Expectation", tabName = "dataExpectation", icon = icon("th")),
       menuItem("GO Term Enrichment", tabName = "goEnrichment", icon = icon("th")),
       menuItem("Pathway Enrichment", tabName = "pathwayEnrichment", icon = icon("th")),
-      menuItem("about", tabName = "About", icon = icon("th"))
+      menuItem("About", tabName = "about", icon = icon("th"))
     )
   ),
   
@@ -183,17 +183,25 @@ ui <- dashboardPage(
         )
       ),
       tabItem(tabName = "goEnrichment",
-              h2("Item 2")
+              h2("Work in progress..")
       ),
       
       # Page Item 3 - VIDE
       tabItem(tabName = "pathwayEnrichment",
-              h2("Item 3")
+              h2("Work in progress..")
       ),
       
       # Page Item 4 - VIDE
       tabItem(tabName = "about",
-              h2("Item 4")
+              style="padding:20px",
+              h2("Hi ! I'm Mehdi Tachekort. I developed this app as a part of a course on RShiny and functional enrichment analysis", style="font-weight:bold"),
+              p("I'm proud to show you my work. For now, I'v just developed the ui but the functionality will be there soon !"),
+              p("If you want to see my codebase, you can click on the link below"),
+              tags$a(
+                href = "https://github.com/Mehdizi/Enrichment-Analeasy",
+                target = "_blank",
+                "Github"
+              ),
       )
     )
   ),
