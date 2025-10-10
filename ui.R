@@ -38,10 +38,19 @@ ui <- dashboardPage(
     # Navigation bar
     sidebarMenu(
       id = "menu_navigation",
-      menuItem("Whole Data Expectation", tabName = "dataExpectation", icon = icon("chart-simple")),
-      menuItem("GO Term Enrichment", tabName = "goEnrichment", icon = icon("magnifying-glass-chart")),
-      menuItem("Pathway Enrichment", tabName = "pathwayEnrichment", icon = icon("database")),
-      menuItem("About", tabName = "about", icon = icon("th"))
+      menuItem("Whole Data Expectation",
+               tabName = "dataExpectation", 
+               icon = icon("chart-simple")
+               ),
+      menuItem("GO Term Enrichment", 
+               tabName = "goEnrichment", 
+               icon = icon("magnifying-glass-chart")),
+      menuItem("Pathway Enrichment", 
+               tabName = "pathwayEnrichment", 
+               icon = icon("database")),
+      menuItem("About", 
+               tabName = "about", 
+               icon = icon("th"))
     )
   ),
   dashboardBody(
@@ -58,7 +67,11 @@ ui <- dashboardPage(
       tags$style(HTML("
       /*  Change the title */
       .brand-link {
-      font-size : 24px !important; font-weight : bold !important; background-color : #009688 !important; width : 100% !important; text-align : center !important;
+      font-size : 24px !important;
+      font-weight : bold !important;
+      background-color : #009688 !important;
+      width : 100% !important;
+      text-align : center !important;
       }
 
 
@@ -87,7 +100,9 @@ ui <- dashboardPage(
 
       /* navigation style */
       .nav {
-      background-color : #009688 !important; padding:10px !important; border-radius:10px !important;
+      background-color : #009688 !important;
+      padding:10px !important;
+      border-radius:10px !important;
       }
 
        /* Style bs4Dash - for active link in navbar */
@@ -111,14 +126,23 @@ ui <- dashboardPage(
 
     # Title of the page
     div(
-      style = "width: 100%; display: flex; justify-content: center; align-items: center; padding: 10px 10px 20px 10px;",
-      h1("Welcome on Enrichment Analeasy", style = "font-weight: bold; font-size: 32px; font-family: Arial, sans-serif; padding : 0, margin : 10px", )
+      style = "width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 10px 20px 10px;",
+      h1("Welcome on Enrichment Analeasy",
+         style = "font-weight: bold;
+         font-size: 32px;
+         font-family: Arial, sans-serif;
+         padding : 0, margin : 10px", )
     ),
     tabItems(
       # Page Home - Welcome and instructions to use the app
       tabItem(
         tabName = "home",
-        h2("Welcome on Enrichment Analeasy, an application that will help you to achieve your functional enrichment analysis !",
+        h2("Welcome on Enrichment Analeasy, an application that will help you to
+           achieve your functional enrichment analysis !",
           style = "padding:30px"
         ),
         box(
@@ -126,9 +150,12 @@ ui <- dashboardPage(
           status = "info",
           solidHeader = TRUE,
           title = "Instructions :",
-          p("1 - Load your data table", style = "font-weight: bold; font-size : 22px"),
-          p("2 - Choose the log2FC with the slider", style = "font-weight: bold;font-size : 22px"),
-          p("3 - Download your plot !", style = "font-weight: bold; font-size : 22px")
+          p("1 - Load your data table",
+            style = "font-weight: bold; font-size : 22px"),
+          p("2 - Choose the log2FC with the slider",
+            style = "font-weight: bold;font-size : 22px"),
+          p("3 - Download your plot !",
+            style = "font-weight: bold; font-size : 22px")
         )
       ),
       # Two bloc to generate plots
@@ -155,7 +182,9 @@ ui <- dashboardPage(
           ),
         ),
         fluidRow(
-          style = "display: flex; justify-content: space-between; margin: 0 20px;",
+          style = "display: flex;
+          justify-content: space-between;
+          margin: 0 20px;",
           # The slider to adjust the log2foldchange
           div(
             style = "width: 45%;",
@@ -208,8 +237,11 @@ ui <- dashboardPage(
       tabItem(
         tabName = "about",
         style = "padding:20px;",
-        h2("Hi ! I'm Mehdi Tachekort. I developed this app as a part of a course on RShiny and functional enrichment analysis", style = "font-weight:bold"),
-        p("I'm proud to show you my work. For now, I'v just developed the ui but the functionality will be there soon !"),
+        h2("Hi ! I'm Mehdi Tachekort. I developed this app as a part of a course
+           on RShiny and functional enrichment analysis",
+           style = "font-weight:bold"),
+        p("I'm proud to show you my work. For now, I'v just developed the ui but
+          the functionality will be there soon !"),
         p("If you want to see my codebase, you can click on the link below"),
         tags$a(
           href = "https://github.com/Mehdizi/Enrichment-Analeasy",
