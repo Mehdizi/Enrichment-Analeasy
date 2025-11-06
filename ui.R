@@ -13,10 +13,14 @@ library(shinydashboard)
 library(bs4Dash)
 library(shinycssloaders)
 library(waiter)
+library(reactable)
+
 
 
 ui <- dashboardPage(
+  #HEADER WITH TITLE'S APP
   dashboardHeader(title = "Enrichment Analeasy"),
+  #SIDEBAR 
   dashboardSidebar(
     # Home button
     sidebarMenu(
@@ -158,65 +162,65 @@ ui <- dashboardPage(
             style = "font-weight: bold; font-size : 22px")
         )
       ),
-      # Two bloc to generate plots
+      # PAGE DATA EXPECTATION 
       tabItem(
         tabName = "dataExpectation",
-        div(
+          # Two blocs, one for plot, one for option sliders
           fluidRow(
             box(
-              title = "",
-              height = "175px",
-              width = 6,
+              title = "Volcanoplot",
+              width = 8,
               status = "info",
               solidHeader = TRUE,
-              plotOutput("", height = "150px")
+              plotOutput("volcanoplot")
             ),
-            box(
-              status = "info",
-              solidHeader = TRUE,
-              title = "",
-              height = "175px",
-              width = 6,
-              plotOutput("", height = "150px")
-            )
-          ),
-        ),
-        fluidRow(
-          style = "display: flex;
-          justify-content: space-between;
-          margin: 0 20px;",
-          # The slider to adjust the log2foldchange
-          div(
-            style = "width: 45%;",
-            sliderInput(
-              inputId = "slider",
-              label = "Slider",
-              min = 0,
-              max = 50,
-              value = 25,
-              step = 1,
-              width = "100%"
-            )
+            # Container of options and download button
+              # The slider to adjust the log2foldchange AND p-value
+              box(
+                title = "Options",
+                solidHeader = TRUE,
+                width = 4,
+                status = "info",
+                sliderInput("foldChangeSlider", "Adjust foldChange", 
+                            min = 0, 
+                            max = 3, 
+                            value = 1, 
+                            step = 0.1
+                ),
+                sliderInput("pvalueChangeSlider", "Adjust p-value",
+                            min = 0.01, 
+                            max = 1, 
+                            value = 0.5, 
+                            step = 0.1
+                )
+                
+              ),
+            div(
+              style = "display: flex;
+    justify-content: end;
+    width: 100%;
+              margin-right:40px;
+              margin-bottom:80px",
+              actionButton("download_btn", "Download",
+                           icon = icon("download"),
+                           style = "    display: flex;
+    justify-content: center;
+    margin: 20px 20px;
+    align-items: center;
+    gap: 10px;
+    width: 200px;"
+              ),
+            ),
           ),
 
-          # A button to download the plot
-          div(
-            actionButton("download_btn", "Download",
-              icon = icon("download"),
-              width = "100%",
-              style = "margin-top: 25px;"
-            )
-          )
-        ),
-        # bloc to receive the downloaded .csv
+        # bloc to receive the data table of downloaded .csv
         fluidRow(
           box(
             status = "info",
             solidHeader = TRUE,
-            title = "",
+            title = "Data table",
             width = 12,
-            height = "200px",
-            plotOutput("", height = "150px")
+            reactableOutput("dataTable")
           ),
         )
       ),
